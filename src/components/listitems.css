@@ -1,0 +1,7 @@
+a {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  color: white;
+  text-decoration: none;
+}
