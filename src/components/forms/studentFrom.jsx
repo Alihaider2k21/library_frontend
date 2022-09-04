@@ -7,7 +7,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import { postStudent } from "../../APIs/callStudents";
 
-export default function StudentForm(props) {
+export default function StudentForm() {
   const [open, setOpen] = React.useState(false);
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");

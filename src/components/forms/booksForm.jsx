@@ -6,7 +6,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { postBooks } from "../../APIs/callBooks";
 import { Autocomplete } from "@mui/material";
-import StudentTable from "../tables/studentTables";
 import { students } from "../../APIs/callStudents";
 
 export default function BooksForm() {

@@ -6,7 +6,6 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import { getByID, postBooks } from "../../APIs/callBooks";
 import { Autocomplete } from "@mui/material";
-import StudentTable from "../tables/studentTables";
 import { students } from "../../APIs/callStudents";
 
 export default function UpdateBooksForm(props) {
@@ -44,7 +43,6 @@ export default function UpdateBooksForm(props) {
   React.useEffect(() => {
     getStudents();
     populateForm();
-    // getStudentName();
   }, []);
 
   const [open, setOpen] = React.useState(false);
@@ -80,7 +78,7 @@ export default function UpdateBooksForm(props) {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Enter Book Detail
+        Click Here to Edit
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
@@ -143,7 +141,6 @@ export default function UpdateBooksForm(props) {
             id="dateOfReturn"
             value={dateOfReturn}
             onChange={(e) => setBDateOfReturn(e.target.value)}
-            // label="Date Of Return"
             type="date"
             fullWidth
             variant="standard"

@@ -4,16 +4,33 @@ import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import { postStudent } from "../../APIs/callStudents";
+import { getStudentbyid, postStudent } from "../../APIs/callStudents";
 
-export default function StudentForm(props) {
+export default function UpdateStudentForm(props) {
+  const [id, setId] = React.useState();
   const [open, setOpen] = React.useState(false);
   const [firstName, setFirstName] = React.useState("");
   const [lastName, setLastName] = React.useState("");
 
+  const populateForm = async () => {
+    try {
+      const studentId = props.id;
+      if (studentId === "new") return;
+      const { data } = await getStudentbyid(studentId);
+      setFirstName(data[0].firstName);
+      setLastName(data[0].lastName);
+      setId(data[0].id);
+      console.log(data[0]);
+    } catch (ex) {}
+  };
+
+  React.useEffect(() => {
+    populateForm();
+  }, []);
+
   const doSubmit = async () => {
     const data = {
+      id,
       firstName,
       lastName,
     };
@@ -33,28 +50,24 @@ export default function StudentForm(props) {
   return (
     <div>
       <Button variant="outlined" onClick={handleClickOpen}>
-        Enter Your Details
+        Click Here to Edit
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogContent>
-          <DialogContentText>Enter Your First & Last Name</DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="firstName"
-            label="First Name"
-            type="email"
+            type="text"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             fullWidth
             variant="standard"
           />
           <TextField
-            autoFocus
             margin="dense"
             id="lastName"
-            label="Last Name"
-            type="email"
+            type="text"
             fullWidth
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}

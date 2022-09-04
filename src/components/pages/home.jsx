@@ -1,5 +1,5 @@
-import React from "react";
+// import React from "react";
 
-export default function Home() {
-  return <div style={{ color: "white" }}>Welcome to the library system</div>;
-}
+// export default function Home() {
+//   return <div style={{ color: "white" }}>Welcome to the library system</div>;
+// }

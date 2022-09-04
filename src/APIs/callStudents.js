@@ -9,9 +9,9 @@ export const getStudentbyid = (id) => {
 };
 export const postStudent = (student) => {
   if (student.id) {
-    const body = { ...body };
+    const body = { ...student };
     delete body.id;
-    return http.put(getStudentbyid(student.id), body);
+    return http.put(`http://localhost:5000/student/${student.id}`, body);
   } else {
     return http.post("http://localhost:5000/student", student);
   }
